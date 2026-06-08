@@ -19,11 +19,9 @@ class CramAi < Formula
     system libexec/"bin/pip", "install",
       "cram-ai[tray,mcp]==#{version}",
       "--quiet"
-
-    # jiter is an optional fast JSON parser pulled in by anthropic. Its pre-built
-    # wheel has a Mach-O header too small for Homebrew's dylib ID rewriting step.
-    # anthropic falls back to stdlib json gracefully when jiter is absent.
-    system libexec/"bin/pip", "uninstall", "jiter", "--yes", "--quiet"
+    # Note: Homebrew emits a non-fatal "Failed to fix install linkage" warning
+    # for jiter's .so (Mach-O header too small for absolute path rewrite).
+    # This is cosmetic — Python loads extensions via dlopen() by path, not dylib ID.
 
     # Expose CLI entry points into Homebrew's bin
     %w[cram cram-menu cram-autostart].each do |script|
