@@ -7,6 +7,11 @@ class CramAi < Formula
 
   depends_on "python@3.12"
 
+  # Homebrew tries to rewrite dylib IDs in libexec, but jiter's pre-built wheel
+  # has a Mach-O header too small for the absolute path. The venv works fine —
+  # skip_clean prevents the noisy (non-fatal) warning.
+  skip_clean "libexec"
+
   def install
     python = Formula["python@3.12"].opt_bin/"python3.12"
 

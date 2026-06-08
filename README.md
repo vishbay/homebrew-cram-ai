@@ -6,6 +6,7 @@ Homebrew tap for [cram-ai](https://github.com/vishbay/cram-ai) — cut AI coding
 
 ```bash
 brew tap vishbay/cram-ai
+brew trust vishbay/cram-ai   # required: Homebrew 5.x tap trust
 brew install cram-ai
 ```
 
@@ -19,13 +20,13 @@ cram-menu            # launch tray popup (macOS menu bar)
 ### Autostart tray at login
 
 ```bash
-brew services start cram-ai
+brew services start vishbay/cram-ai/cram-ai
 ```
 
 ### Stop autostart
 
 ```bash
-brew services stop cram-ai
+brew services stop vishbay/cram-ai/cram-ai
 ```
 
 ## Extras
