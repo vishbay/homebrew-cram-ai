@@ -7,11 +7,6 @@ class CramAi < Formula
 
   depends_on "python@3.12"
 
-  # Homebrew tries to rewrite dylib IDs in libexec, but jiter's pre-built wheel
-  # has a Mach-O header too small for the absolute path. The venv works fine —
-  # skip_clean prevents the noisy (non-fatal) warning.
-  skip_clean "libexec"
-
   def install
     python = Formula["python@3.12"].opt_bin/"python3.12"
 
@@ -24,6 +19,11 @@ class CramAi < Formula
     system libexec/"bin/pip", "install",
       "cram-ai[tray,mcp]==#{version}",
       "--quiet"
+
+    # jiter is an optional fast JSON parser pulled in by anthropic. Its pre-built
+    # wheel has a Mach-O header too small for Homebrew's dylib ID rewriting step.
+    # anthropic falls back to stdlib json gracefully when jiter is absent.
+    system libexec/"bin/pip", "uninstall", "jiter", "--yes", "--quiet"
 
     # Expose CLI entry points into Homebrew's bin
     %w[cram cram-menu cram-autostart].each do |script|
