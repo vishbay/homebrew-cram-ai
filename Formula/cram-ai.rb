@@ -1,8 +1,8 @@
 class CramAi < Formula
-  desc "Cut AI coding token costs by 96-98% — curated context, MCP server, and tray app"
+  desc "Stable context layer for AI coding tools — Haiku-generated, delivered via MCP"
   homepage "https://github.com/vishbay/cram-ai"
-  url "https://files.pythonhosted.org/packages/d7/16/da6faacd5fed219309295d201d07e833d9126d954bccc58020e83c5d6fdc/cram_ai-0.1.0.tar.gz"
-  sha256 "f4b761e618c9ca5f173b75cab659ef173f6ba38125364c3e768c080341d0c628"
+  url "https://files.pythonhosted.org/packages/source/c/cram-ai/cram_ai-0.2.0.tar.gz"
+  sha256 "f319d499ae596aecd4f1bf8fa94813dcdfc383d01b469814fa6967bb3aa40786"
   license "MIT"
 
   depends_on "python@3.12"
